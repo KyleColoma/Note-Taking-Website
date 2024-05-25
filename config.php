@@ -1,5 +1,6 @@
 <?php 
 
+// Website Configuration
 return [
     "database"=> [    
         "host"=> "localhost",
