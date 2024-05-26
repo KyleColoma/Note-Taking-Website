@@ -9,7 +9,7 @@ $password = $_POST["password"];
 
 $errors = [];
 
-
+// Validate email
 if(! Validator::email($email)) {
     $errors["email"] = "Please provide a valid email address.";
 }
