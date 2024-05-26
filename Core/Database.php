@@ -3,6 +3,7 @@
 namespace Core;
 use PDO;
 
+// Class for communicating with the Database
 class Database 
 {
     public $connection;
