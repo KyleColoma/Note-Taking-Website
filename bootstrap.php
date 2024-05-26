@@ -6,6 +6,7 @@ use Core\Database;
 
 $container = new Container();
 
+// Main Database
 $container -> bind("Core\Database", function () {
     $config = require base_path("config.php");
 
