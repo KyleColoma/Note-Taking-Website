@@ -1,5 +1,6 @@
 <?php 
 
+
 use Core\App;
 
 $db = App::resolve('Core\Database');

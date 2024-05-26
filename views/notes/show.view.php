@@ -4,11 +4,19 @@
 
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <p> 
-            <?= htmlspecialchars($note["body"]); ?> 
+        <p>
+            <?= htmlspecialchars($note["body"]); ?>
         </p>
         <footer class="mt-6">
-            <a href="/note/edit?id=<?= $note["id"] ?>" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"">Edit</a>
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                <a href="/note/edit?id=<?= $note["id"] ?>" class="text-sm font-semibold leading-6 text-gray-900">Edit</a>
+                <form  method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="<?= $note["id"] ?>">
+                    <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Delete</button>
+                </form>
+            </div>
+
         </footer>
     </div>
 </main>
