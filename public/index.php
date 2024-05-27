@@ -1,5 +1,7 @@
 <?php
 
+USE Core\Session;
+
 session_start();
 
 // Base Path of the Directory
@@ -30,3 +32,5 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 // Route the request using the URI and METHOD
 $router->route($uri, $method);
+
+Session::unflash();

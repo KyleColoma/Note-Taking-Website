@@ -3,6 +3,9 @@
 use Core\App;
 use Core\Database;
 use Core\Validator;
+use Core\Authenticator;
+
+$db = App::resolve(Database::class);
 
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -25,24 +28,25 @@ if(! empty( $errors)) {
     ]);
 }
 
-$db = App::resolve(Database::class);
-
 $user = $db -> query("select * from users where email = :email", [
     'email' => $email,
 ])->find();
 
+
 if($user) {
-    header('location: /');
-    exit();
+    $errors["email"] = "The account already Exist";
+    return view('registration/create.view.php', [
+        'errors' => $errors,
+    ]);
 } else {
     $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email'=> $email,
-        'password'=> $password,
+        'password'=> password_hash($password, PASSWORD_BCRYPT),
     ]);
 
-    $_SESSION['user'] = [
+    App::resolve(Authenticator::class)->login([
         'email' => $email,
-    ];
+    ]);
 
     header('location: /');
     exit();
