@@ -1,6 +1,7 @@
 <?php
 
-USE Core\Session;
+use Core\Session;
+use Core\ValidationException;
 
 session_start();
 
@@ -30,7 +31,17 @@ $uri = parse_url($_SERVER['REQUEST_URI'])["path"];
 // Obtain the method and override if method exist
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-// Route the request using the URI and METHOD
-$router->route($uri, $method);
+try 
+{
+    // Route the request using the URI and METHOD
+    $router->route($uri, $method);
+}
+catch (ValidationException $exception)
+{
+    Session::flash("errors", $exception->errors);
+    Session::flash("old", $exception->old);
+
+    return redirect($router->previousUrl());
+}
 
 Session::unflash();

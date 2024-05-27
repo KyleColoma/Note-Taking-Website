@@ -44,7 +44,7 @@ if($user) {
         'password'=> password_hash($password, PASSWORD_BCRYPT),
     ]);
 
-    App::resolve(Authenticator::class)->login([
+    (new Authenticator)->login([
         'email' => $email,
     ]);
 

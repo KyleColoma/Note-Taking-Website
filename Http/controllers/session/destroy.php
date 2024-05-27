@@ -3,7 +3,7 @@
 use Core\App;
 use Core\Authenticator;
 
-App::resolve(Authenticator::class)->logout();
+(new Authenticator)->logout();
 
 header("location: /");
 exit();
