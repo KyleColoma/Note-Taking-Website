@@ -8,14 +8,10 @@ session_start();
 // Base Path of the Directory
 const BASE_PATH = __DIR__ . "/../";
 
+require BASE_PATH . "/vendor/autoload.php";
+
 // Include Function File
 require BASE_PATH . "Core/functions.php";
-
-// Register an autoloader for classes
-spl_autoload_register(function ($class) {
-    $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
-    require base_path("{$class}.php");
-});
 
 // Include the Bootstrap File for allowing access to classes
 require base_path("bootstrap.php");

@@ -1,0 +1,23 @@
+{
+    "name": "kyle/note-taking-website",
+    "description": "Demo Project",
+    "type": "project",
+    "require": {
+        "illuminate/collections": "^11.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    },
+    "platform-check": false,
+    "require-dev": {
+        "pestphp/pest": "^2.34"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

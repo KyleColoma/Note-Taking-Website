@@ -8,4 +8,5 @@
     </div>
 </main>
 
+
 <?php require "partials/foot.php" ?>
